@@ -37,7 +37,7 @@ final class TelegramServiceProvider extends ServiceProvider
      */
     private function offerPublishing(): void
     {
-        if ($this->app instanceof HypervelApplication && $this->app->runningInConsole()) {
+        if ($this->app instanceof HypervelApplication) {
             $this->publishes([
                 __DIR__.'/config/telegram.php' => config_path('telegram.php'),
             ], 'telegram-config');
@@ -49,7 +49,7 @@ final class TelegramServiceProvider extends ServiceProvider
      */
     private function registerBindings(): void
     {
-        $this->app->singleton(BotsManager::class, static fn ($app): BotsManager => (new BotsManager(config('telegram')))->setContainer($app));
+        $this->app->bind(BotsManager::class, static fn ($app): BotsManager => (new BotsManager(config('telegram')))->setContainer($app));
         $this->app->alias(BotsManager::class, 'telegram');
 
         $this->app->bind(Api::class, static fn ($app) => $app[BotsManager::class]->bot());
@@ -61,11 +61,9 @@ final class TelegramServiceProvider extends ServiceProvider
      */
     private function registerCommands(): void
     {
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                WebhookCommand::class,
-            ]);
-        }
+        $this->commands([
+            WebhookCommand::class,
+        ]);
     }
 
     /**

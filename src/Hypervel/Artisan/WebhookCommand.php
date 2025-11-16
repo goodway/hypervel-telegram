@@ -2,8 +2,8 @@
 
 namespace Telegram\Bot\Hypervel\Artisan;
 
-use Illuminate\Console\Command;
-use Illuminate\Support\Str;
+use Hypervel\Console\Command;
+use Hypervel\Support\Str;
 use Symfony\Component\Console\Helper\TableCell;
 use Telegram\Bot\Api;
 use Telegram\Bot\BotsManager;
@@ -18,7 +18,7 @@ class WebhookCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'telegram:webhook {bot? : The bot name defined in the config file}
+    protected ?string $signature = 'telegram:webhook {bot? : The bot name defined in the config file}
                 {--all : To perform actions on all your bots.}
                 {--setup : To declare your webhook on Telegram servers. So they can call you.}
                 {--remove : To remove your already declared webhook on Telegram servers.}
@@ -29,7 +29,7 @@ class WebhookCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Ease the Process of setting up and removing webhooks.';
+    protected string $description = 'Ease the Process of setting up and removing webhooks.';
 
     protected Api $telegram;
 
@@ -37,6 +37,8 @@ class WebhookCommand extends Command
 
     /** @var array Bot Config */
     protected array $config = [];
+
+    protected bool $coroutine = true;
 
     /**
      * Execute the console command.
