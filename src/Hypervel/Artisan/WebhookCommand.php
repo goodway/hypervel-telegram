@@ -1,6 +1,6 @@
 <?php
 
-namespace Telegram\Bot\Laravel\Artisan;
+namespace Telegram\Bot\Hypervel\Artisan;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;

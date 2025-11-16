@@ -1,6 +1,6 @@
 <?php
 
-namespace Telegram\Bot\Laravel\Facades;
+namespace Telegram\Bot\Hypervel\Facades;
 
 use Illuminate\Support\Facades\Facade;
 use Telegram\Bot\BotsManager;

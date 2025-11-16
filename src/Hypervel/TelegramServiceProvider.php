@@ -1,14 +1,13 @@
 <?php
 
-namespace Telegram\Bot\Laravel;
+namespace Telegram\Bot\Hypervel;
 
 use Illuminate\Contracts\Support\DeferrableProvider;
-use Illuminate\Foundation\Application as LaravelApplication;
+use Illuminate\Foundation\Application as HypervelApplication;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Lumen\Application as LumenApplication;
 use Telegram\Bot\Api;
 use Telegram\Bot\BotsManager;
-use Telegram\Bot\Laravel\Artisan\WebhookCommand;
+use Telegram\Bot\Hypervel\Artisan\WebhookCommand;
 
 /**
  * Class TelegramServiceProvider.
@@ -39,12 +38,10 @@ final class TelegramServiceProvider extends ServiceProvider implements Deferrabl
      */
     private function offerPublishing(): void
     {
-        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
+        if ($this->app instanceof HypervelApplication && $this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/config/telegram.php' => config_path('telegram.php'),
             ], 'telegram-config');
-        } elseif ($this->app instanceof LumenApplication) {
-            $this->app->configure('telegram');
         }
     }
 
