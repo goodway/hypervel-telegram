@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Telegram\Bot;
 
 use GuzzleHttp\Promise\PromiseInterface;
@@ -37,6 +39,9 @@ final class TelegramClient
         return $this;
     }
 
+    /**
+     * @throws TelegramSDKException
+     */
     public function sendRequest(TelegramRequest $request): TelegramResponse
     {
         [$url, $method, $headers, $isAsyncRequest] = $this->prepareRequest($request);

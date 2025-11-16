@@ -2,7 +2,7 @@
 
 namespace Telegram\Bot\Objects;
 
-use Illuminate\Support\Collection;
+use Hypervel\Support\Collection;
 use Telegram\Bot\Objects\Payments\PreCheckoutQuery;
 use Telegram\Bot\Objects\Payments\ShippingQuery;
 

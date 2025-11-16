@@ -31,6 +31,7 @@ trait CommandsHandler
      * Processes Inbound Commands.
      *
      * @return Update|Update[]
+     * @throws TelegramSDKException
      */
     public function commandsHandler(bool $webhook = false, ?RequestInterface $request = null): Update|array
     {

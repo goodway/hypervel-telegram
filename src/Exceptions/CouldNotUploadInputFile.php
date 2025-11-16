@@ -31,11 +31,23 @@ final class CouldNotUploadInputFile extends TelegramSDKException
 
     public static function inputFileParameterShouldBeInputFileEntity($property): self
     {
-        return new self(sprintf('A path to local file, a URL, or a file resource should be uploaded using `'.InputFile::class.'::create($pathOrUrlOrResource, $filename)` for `%s` property. Please view docs for example.', $property));
+        return new self(
+            sprintf(
+                'A path to local file, a URL, or a file resource should be uploaded using `'
+                . InputFile::class
+                . '::create($pathOrUrlOrResource, $filename)` for `%s` property. Please view docs for example.',
+                $property
+            )
+        );
     }
 
     public static function missingParam($inputFileField): self
     {
-        return new self(sprintf('Input field [%s] is missing in your params. Please make sure it exists and is an `Telegram\Bot\FileUpload\InputFile` entity.', $inputFileField));
+        return new self(
+            sprintf(
+                'Input field [%s] is missing in your params. Please make sure it exists and is an `Telegram\Bot\FileUpload\InputFile` entity.',
+                $inputFileField
+            )
+        );
     }
 }

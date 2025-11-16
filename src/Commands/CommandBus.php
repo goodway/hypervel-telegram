@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Telegram\Bot\Commands;
 
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
+use Hypervel\Support\Collection;
+use Hyperf\Collection\Collection as HyperfCollection;
+use Hypervel\Support\Str;
 use InvalidArgumentException;
 use Telegram\Bot\Answers\AnswerBus;
 use Telegram\Bot\Api;
@@ -134,7 +135,10 @@ class CommandBus extends AnswerBus
         );
 
         // When in group - Ex: /command@MyBot. Just get the command name.
-        return Str::of($command)->explode('@')->first();
+        /** @var string $commandName */
+        $commandName = Str::of($command)->explode('@')->first();
+
+        return $commandName;
     }
 
     /**
@@ -157,7 +161,7 @@ class CommandBus extends AnswerBus
     /**
      * Returns all bot_commands detected in the update.
      */
-    private function parseCommandsIn(Collection $message): Collection
+    private function parseCommandsIn(Collection $message): Collection|HyperfCollection
     {
         return Collection::wrap($message->get('entities'))
             ->filter(static fn (MessageEntity $entity): bool => $entity->type === 'bot_command');

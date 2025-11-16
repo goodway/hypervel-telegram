@@ -79,6 +79,9 @@ final class Actions
         return (new ReflectionClass(self::class))->getConstants();
     }
 
+    /**
+     * @throws TelegramSDKException
+     */
     public static function isActionValid(string $action): bool
     {
         $actions = self::all();

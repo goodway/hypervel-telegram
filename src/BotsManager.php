@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Telegram\Bot;
 
-use Illuminate\Support\Arr;
+use Hypervel\Support\Arr;
 use Psr\Container\ContainerInterface;
 use Telegram\Bot\Commands\CommandInterface;
 use Telegram\Bot\Exceptions\TelegramBotNotFoundException;
@@ -49,6 +51,7 @@ final class BotsManager
 
         $bots = collect($this->getConfig('bots'));
 
+        /** @var mixed|null $config */
         $config = $bots->get($name);
 
         if (! $config) {
@@ -212,7 +215,11 @@ final class BotsManager
             // If the command is a group, we'll parse through the group of commands
             // and resolve the full class name.
             if ($commandGroups->has($command)) {
-                return $this->parseCommands($commandGroups->get($command));
+
+                /** @var array $commandItem */
+                $commandItem = $commandGroups->get($command);
+
+                return $this->parseCommands($commandItem);
             }
 
             // If this command is actually a shared command, we'll extract the full

@@ -2,9 +2,8 @@
 
 namespace Telegram\Bot\Hypervel;
 
-use Illuminate\Contracts\Support\DeferrableProvider;
-use Illuminate\Foundation\Application as HypervelApplication;
-use Illuminate\Support\ServiceProvider;
+use Hypervel\Foundation\Application as HypervelApplication;
+use Hypervel\Support\ServiceProvider;
 use Telegram\Bot\Api;
 use Telegram\Bot\BotsManager;
 use Telegram\Bot\Hypervel\Artisan\WebhookCommand;
@@ -12,7 +11,7 @@ use Telegram\Bot\Hypervel\Artisan\WebhookCommand;
 /**
  * Class TelegramServiceProvider.
  */
-final class TelegramServiceProvider extends ServiceProvider implements DeferrableProvider
+final class TelegramServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

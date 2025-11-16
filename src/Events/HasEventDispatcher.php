@@ -7,7 +7,7 @@ trait HasEventDispatcher
     /**
      * @var EventDispatcherListenerContract|null
      */
-    protected $dispatcher;
+    protected ?EventDispatcherListenerContract $dispatcher;
 
     public function useEventDispatcher(EventDispatcherListenerContract $emitter): void
     {

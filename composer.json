@@ -1,6 +1,6 @@
 {
-    "name": "irazasyed/telegram-bot-sdk",
-    "description": "The Unofficial Telegram Bot API PHP SDK",
+    "name": "goodway/hypervel-telegram",
+    "description": "The Unofficial Telegram Bot API PHP SDK With Hypervel Support",
     "license": "BSD-3-Clause",
     "type": "library",
     "keywords": [
@@ -9,17 +9,17 @@
         "telegram bot api",
         "telegram sdk",
         "telegram php",
-        "laravel telegram",
-        "laravel"
+        "hypervel telegram",
+        "hypervel"
     ],
     "authors": [
         {
-            "name": "Irfaq Syed",
-            "email": "github@lukonet.net",
-            "homepage": "https://github.com/irazasyed"
+            "name": "Serge Goodway",
+            "email": "goodwaysarts@gmail.com",
+            "homepage": "https://github.com/goodway"
         }
     ],
-    "homepage": "https://github.com/irazasyed/telegram-bot-sdk",
+    "homepage": "https://github.com/goodway/hypervel-telegram",
     "require": {
         "php": "^8.2",
         "ext-json": "*",
@@ -62,10 +62,10 @@
         },
         "hypervel": {
             "aliases": {
-                "Telegram": "Telegram\\Bot\\Laravel\\Facades\\Telegram"
+                "Telegram": "Telegram\\Bot\\Hypervel\\Facades\\Telegram"
             },
             "providers": [
-                "Telegram\\Bot\\Laravel\\TelegramServiceProvider"
+                "Telegram\\Bot\\Hypervel\\TelegramServiceProvider"
             ]
         }
     },

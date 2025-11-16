@@ -2,10 +2,10 @@
 
 namespace Telegram\Bot\Objects;
 
-use Illuminate\Support\Collection;
-use Illuminate\Support\Enumerable;
-use Illuminate\Support\Str;
-use Illuminate\Support\Traits\EnumeratesValues;
+use Hyperf\Collection\Enumerable;
+use Hyperf\Collection\Traits\EnumeratesValues;
+use Hypervel\Support\Collection;
+use Hypervel\Support\Str;
 use InvalidArgumentException;
 
 /**
