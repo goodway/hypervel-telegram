@@ -2,7 +2,7 @@
 
 namespace Telegram\Bot\Hypervel\Facades;
 
-use Illuminate\Support\Facades\Facade;
+use Hypervel\Support\Facades\Facade;
 use Telegram\Bot\BotsManager;
 
 /**
