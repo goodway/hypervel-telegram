@@ -2,8 +2,8 @@
 
 namespace Telegram\Bot\Keyboard;
 
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
+use Hypervel\Support\Collection;
+use Hypervel\Support\Str;
 
 /**
  * Class Base.
