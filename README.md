@@ -1,4 +1,3 @@
-[![Telegram Bot API PHP SDK](https://user-images.githubusercontent.com/1915268/75023827-7879f780-54be-11ea-98c1-436a14e7e633.png)][link-repo]
 
 <p align="center">
 <a href="https://github.com/goodway/hypervel-telegram/actions"><img src="https://img.shields.io/github/actions/workflow/status/irazasyed/telegram-bot-sdk/ci.yml?style=for-the-badge" alt="Build Status"/></a>
@@ -22,6 +21,68 @@ Telegram Bot API - PHP SDK
 If you're using this SDK to build your Telegram Bots or have a project that's relevant to this SDK, We'd love to know and share it with the world.
 
 
+## 📦 Installation
+
+Install via Composer:
+
+```bash
+composer require goodway/hypervel-telegram
+```
+
+Next, you should publish the HypervelTelegram configuration file using the vendor:publish Artisan command. Configuration file will be placed in your application's config directory:
+
+```
+php artisan vendor:publish "Telegram\Bot\Hypervel\TelegramServiceProvider"
+```
+
+## 🧪 Usage Example
+
+```php
+use Telegram\Bot\Hypervel\Facades\Telegram;
+
+$response = Telegram::sendMessage([
+	'chat_id' => 'CHAT_ID',
+	'text' => 'Hello World'
+]);
+
+$messageId = $response->getMessageId();
+```
+
+## 🧪 Advanced Usage Example With InlineKeyboard
+
+```php
+use Telegram\Bot\Hypervel\Facades\Telegram;
+use Telegram\Bot\Keyboard\Keyboard;
+use Telegram\Bot\Keyboard\Button;
+
+$buttons = [
+     new Button()->setText('Button 1')->setCallbackData('btn1_callback'),
+     new Button()->setText('Button 2')->setCallbackData('btn2_callback'),
+];
+
+$keyboard = new Keyboard()->inline()->row($buttons);
+$replyMarkup = json_encode($keyboard->toArray());
+        
+$response = Telegram::sendMessage([
+    'chat_id' => 'CHAT_ID',
+    'text' => 'Hello World',
+    'parse_mode' => 'MarkdownV2',
+    'reply_markup' => $replyMarkup,
+]);
+
+$messageId = $response->getMessageId();
+```
+
+
+## 🧠 Why Hypervel?
+
+Hypervel is a modern PHP framework built for performance and scalability. This Telegram client is built with Hypervel in mind, ensuring smooth compatibility and optimal performance within your Hypervel-based applications.
+
+## 🔄 Migration Note
+
+This client is a **port** of the popular [telegram-bot-sdk](https://github.com/irazasyed/telegram-bot-sdk) library, which was originally designed for PHP & Laravel. I have adapted and optimized this version specifically for Hypervel framework compatibility, maintaining all core functionality while ensuring seamless integration with Hypervel's architecture.
+
+
 ## Additional information
 
 Any issues, feedback, suggestions or questions please use issue tracker [here][link-issues].
@@ -34,12 +95,6 @@ Thank you for considering contributing to the project. Please review the [CONTRI
 
 - [Serge Goodway][link-author]
 - [All Contributors][link-contributors]
-
-## Thanks
-
-Thanks to these companies for providing access to their products that have been very useful in developing this SDK. Please go check them out!
-
-
 
 
 ## Disclaimer
@@ -57,3 +112,10 @@ This project is released under the [BSD 3-Clause][link-license] License.
 [link-contributors]: https://github.com/goodway/hypervel-telegram/contributors
 [link-license]: https://github.com/goodway/hypervel-telegram/blob/develop/LICENSE.md
 [link-telegram-bot-api]: https://core.telegram.org/bots
+
+
+## 🛠️ Coming Soon
+
+- Better integration with Hypervel
+- Improved documentation and examples
+- Enhanced error handling and logging
